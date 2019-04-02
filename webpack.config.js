@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 /*
  * SplitChunksPlugin is enabled by default and replaced
@@ -28,8 +29,9 @@ module.exports = {
 	mode: 'development',
 	entry: [path.join(__dirname, 'src/index.tsx')],
 	output: {
-		chunkFilename: '[name].[hash].js',
-		filename: '[name].[hash].js'
+		filename: '[name].js',
+		path: path.join(__dirname, 'dist'),
+		publicPath: '/'
 	},
 	resolve: {
 		extensions: ['.js', '.ts', '.tsx']
@@ -71,5 +73,11 @@ module.exports = {
 			minSize: 30000,
 			name: true
 		}
-	}
+	},
+
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, 'template.html')
+		})
+	]
 };
