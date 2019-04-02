@@ -1,24 +1,24 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
   componentDidMount() {
     const script = document.createElement("script");
-    script.src = "./src/alert.js";
-    document.getElementById('zucks_home').replaceWith(script)
+		script.src = "./src/document-write.js";
+    document.getElementById('my-script').replaceWith(script)
   }
 
   render() {
     return (
       <>
         <h1>hello</h1>
-        <div id="zucks_home"></div>
+        <div id="my-script"></div>
+        <div id="my-ad"></div>
       </>
     )
   }
 }
 
-// Render your table
 ReactDOM.render(
   <App />,
   document.querySelector('#root')
